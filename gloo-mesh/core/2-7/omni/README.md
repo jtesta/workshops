@@ -85,7 +85,7 @@ You can find more information about Gloo Mesh Core in the official documentation
 
 Clone this repository and go to the directory where this `README.md` file is.
 
-The host system will need Docker, Kind, and kubectl installed.
+The host system will need Docker, Kind, helm, and kubectl installed.
 
 For convenience, a setup script has been made for Ubuntu 24.04 which installs these for you:
 

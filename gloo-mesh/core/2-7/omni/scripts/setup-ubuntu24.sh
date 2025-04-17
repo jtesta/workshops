@@ -51,6 +51,10 @@ cp /root/go/bin/kind /usr/local/bin/kind
 echo -e "\n\n${WHITEB}Installing kubectl...${CLR}\n"
 snap install kubectl --classic
 
+# Install helm
+echo -e "\n\n${WHITEB}Installing helm...${CLR}\n"
+snap install helm --classic
+
 
 echo -e "\n\n${GREENB}Done!${CLR}\n"
 exit 0
