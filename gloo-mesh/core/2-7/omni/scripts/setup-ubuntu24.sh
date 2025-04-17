@@ -37,6 +37,9 @@ apt dist-upgrade -y
 echo -e "\n\n${WHITEB}Installing Docker and Go command...${CLR}\n"
 apt install docker.io golang-go -y
 
+# Remove setup packages.
+apt clean
+
 # Install kind.
 echo -e "\n\n${WHITEB}Installing latest version of kind...${CLR}\n"
 go install sigs.k8s.io/kind@latest
