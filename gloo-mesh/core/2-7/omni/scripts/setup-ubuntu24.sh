@@ -41,8 +41,8 @@ apt install docker.io golang-go -y
 echo -e "\n\n${WHITEB}Installing latest version of kind...${CLR}\n"
 go install sigs.k8s.io/kind@latest
 
-# The kind command ends up here.
-export PATH=/root/go/bin:$PATH
+# Copy the kind command to /usr/local/bin.
+cp /root/go/bin/kind /usr/local/bin/kind
 
 # Install kubectl.
 echo -e "\n\n${WHITEB}Installing kubectl...${CLR}\n"
