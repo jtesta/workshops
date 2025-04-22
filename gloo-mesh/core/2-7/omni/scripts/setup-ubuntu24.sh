@@ -53,7 +53,31 @@ snap install kubectl --classic
 
 # Install helm.  We can't install the latest version, because of this issue: https://github.com/solo-io/workshops/issues/283
 echo -e "\n\n${WHITEB}Installing helm...${CLR}\n"
-snap install helm --classic --channel=3.7/stable
+
+# Create a safe working directory and make it our current directory.
+temp_dir=$(mktemp -d)
+pushd ${temp_dir} > /dev/null
+
+# Get the latest working version of Helm for this application.
+wget -O helm.tar.gz https://get.helm.sh/helm-v3.17.2-linux-amd64.tar.gz
+
+# Check its sha256 hash.
+expected_hash="90c28792a1eb5fb0b50028e39ebf826531ebfcf73f599050dbd79bab2f277241"
+actual_hash=$(sha256sum ${temp_dir}/helm.tar.gz | cut -f1 -d" ")
+if [[ $actual_hash != $expected_hash ]]; then
+    echo -e "${REDB}Error: sha256sum of ${temp_dir}/helm.tar.gz is ${actual_hash} instead of ${expected_hash}${CLR}"
+    exit -1
+fi
+
+# Uncompress the archive and install it into /usr/local/bin.
+tar xvzf helm.tar.gz
+install -m 0755 -o root -g root linux-amd64/helm /usr/local/bin
+
+# Restore our original working directory.
+popd > /dev/null
+
+# Remove the working directory.
+rm -rf ${temp_dir}
 
 echo -e "\n\n${GREENB}Done!${CLR}\n"
 exit 0
