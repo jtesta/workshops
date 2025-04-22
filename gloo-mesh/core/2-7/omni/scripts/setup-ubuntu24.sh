@@ -33,9 +33,9 @@ echo -e "${WHITEB}Updating system...${CLR}\n"
 apt update
 apt dist-upgrade -y
 
-# Install Docker and Go command.
-echo -e "\n\n${WHITEB}Installing Docker and Go command...${CLR}\n"
-apt install docker.io golang-go -y
+# Install Docker, Go command, and step.
+echo -e "\n\n${WHITEB}Installing Docker, Go command, and step...${CLR}\n"
+apt install docker.io golang-go step -y
 
 # Remove setup packages.
 apt clean
