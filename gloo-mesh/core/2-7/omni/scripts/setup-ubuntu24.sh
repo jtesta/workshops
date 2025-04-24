@@ -81,8 +81,8 @@ go install sigs.k8s.io/kind@latest
 cp /root/go/bin/kind /usr/local/bin/kind
 
 # Install kubectl.
-echo -e "\n\n${WHITEB}Installing kubectl...${CLR}\n"
-snap install kubectl --classic
+echo -e "\n\n${WHITEB}Installing kubectl and gcloud...${CLR}\n"
+snap install kubectl google-cloud-cli --classic
 
 # Install helm.  We can't install the latest version, because of this issue: https://github.com/solo-io/workshops/issues/283
 echo -e "\n\n${WHITEB}Installing helm...${CLR}\n"
